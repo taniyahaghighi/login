@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            border: none;
+            outline: none;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 14px 20px;
+            background: #e2e3e5;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .imgcontainer {
+            display: flex;
+            margin: 24px 0 12px 0;
+            position: relative;
+            justify-content: center;
+        }
+
+        img.avatar {
+            width: 10%;
+            border-radius: 50%;
+        }
+
+        .bodycontainer {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .modal {
+            display: none;
+            z-index: 1;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, .4);
+            padding-top: 60px;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .close:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            height: 25px;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <button onclick="myfunction()" id="btn">login</button>
+        <p id="login"></p>
+        <div class="modal" id="mymodal">
+            <form action="#" class="modal-content animate">
+                <div class="imgcontainer">
+                    <span class="close" title="close" onclick="closelogin()">&times;</span>
+                    <img src="images.png" alt="login" class="avatar">
+                </div>
+                <div class="bodycontainer">
+                    <label for="username">username</label><br>
+                    <input type="text" id="username"><br>
+                    <label for="password">password</label><br>
+                    <input type="password" id="password"><br>
+                    <button onclick="login()" id="loginbtn">login</button>
+                    <p id="tryagain"></p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <script>
+        let username = document.getElementById("username");
+        let modal = document.getElementById("mymodal");
+        let password = document.getElementById("password");
+        let para = document.getElementById("tryagain");
+        let paralogin = document.getElementById("login");
+       
+       
+        function myfunction() {
+            modal.style.display = "block";
+            password.value = "";
+            username.value = "";
+            btn.innerText="login";
+            paralogin.innerText = "";
+        }
+
+        function closelogin() {
+
+            modal.style.display = "none";
+        }
+
+        function login() {
+
+            if (password.value == "haghighi" && username.value == "taniya") {
+                paralogin.innerText = "welcome";
+                modal.style.display = "none";
+                btn.innerText = "logout"
+            }
+            try {
+                if (password.value.length > 8) throw "the number of the password is ok";
+            } catch (error) {
+                para.innerText = error;
+
+            }
+            try {
+                if (password.value.length < 8) throw "try again";
+
+            } catch (error) {
+                para.innerText = error;
+
+            }
+            
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>
